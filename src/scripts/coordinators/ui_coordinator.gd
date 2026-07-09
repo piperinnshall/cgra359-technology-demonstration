@@ -13,6 +13,8 @@ enum State {
 var state: State
 
 func _ready():
+    $MainMenu.play_pressed.connect(_on_play)
+    $MainMenu.quit_pressed.connect(_on_quit)
     change(State.MAIN_MENU)
 
 func change(new_state: State):
@@ -20,7 +22,10 @@ func change(new_state: State):
         return
     if state != null:
         ui[state].hide()
-        
     ui[new_state].show()
     state = new_state
     
+func _on_play(): 
+    pass
+func _on_quit(): 
+    pass

@@ -19,11 +19,6 @@ config/icon="res://icon.svg"
 
 InputManager="*uid://bevalpnkdi4bw"
 
-[display]
-
-window/size/resizable=false
-window/size/borderless=true
-
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot-vim/plugin.cfg")
