@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://clfsucjc5vur8"]
+
+[ext_resource type="Script" uid="uid://bmfh6u1la1f3y" path="res://src/scripts/coordinators/scene_coordinator.gd" id="1_eygvr"]
+
+[node name="SceneCoordinator" type="Node" unique_id=1148662172]
+script = ExtResource("1_eygvr")
