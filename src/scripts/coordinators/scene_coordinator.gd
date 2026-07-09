@@ -12,7 +12,6 @@ func change_scene(path: String) -> void:
 func _process(_delta: float) -> void:
     if _loading_path == "":
         return
-
     match ResourceLoader.load_threaded_get_status(_loading_path):
         ResourceLoader.THREAD_LOAD_LOADED:
             var packed_scene: PackedScene = ResourceLoader.load_threaded_get(_loading_path)
@@ -29,7 +28,6 @@ func _stop_loading() -> void:
 func _change(packed_scene: PackedScene) -> void:
     if _current_scene:
         _current_scene.queue_free()
-        
     var instance := packed_scene.instantiate()
     get_tree().root.add_child(instance)
     _current_scene = instance

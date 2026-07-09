@@ -23,17 +23,23 @@ func setup(game_coordinator: GameCoordinator):
     _main_menu.quit_pressed.connect(_on_quit_pressed)
     _change(State.MAIN_MENU)
 
+
 func _change(new_state: State):
     if _state == new_state: 
         return
-    if _state != State.NONE:
-        _ui[_state].hide()
-        
+    _hide()
     _ui[new_state].show()
     _state = new_state
     
+func _hide():
+    if _state == State.NONE:
+        return
+    _ui[_state].hide()
+        
 func _on_play_pressed(): 
-    pass
+    _hide()
+    _state = State.NONE
+    _game_coordinator.play()
     
 func _on_quit_pressed(): 
     _game_coordinator.quit()
