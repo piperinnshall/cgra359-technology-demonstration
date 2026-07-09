@@ -7,13 +7,14 @@ enum State {
     NONE,
 }
 
-var game_coordinator: GameCoordinator
-var _state := State.NONE
+var game_coordinator:       GameCoordinator
+var _state                  := State.NONE
 
-@onready var _main_menu := $MainMenu
-@onready var _ui := {
+@onready var _main_menu     := $MainMenu
+@onready var _pause_menu    := $PauseMenu
+@onready var _ui            := {
     State.MAIN_MENU: _main_menu,
-    #State.PAUSE_MENU: $PauseMenu,
+    State.PAUSE_MENU: _pause_menu,
 }
 
 func _ready():
