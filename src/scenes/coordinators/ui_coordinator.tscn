@@ -1,3 +1,9 @@
 [gd_scene format=3 uid="uid://vftuuwmcpoyg"]
 
+[ext_resource type="Script" uid="uid://b6ci02ybtqssp" path="res://src/scripts/coordinators/ui_coordinator.gd" id="1_plcdi"]
+[ext_resource type="PackedScene" uid="uid://k6roufgxwpqj" path="res://src/scenes/ui/main_menu.tscn" id="2_s2ev0"]
+
 [node name="UICoordinator" type="CanvasLayer" unique_id=684115348]
+script = ExtResource("1_plcdi")
+
+[node name="MainMenu" parent="." unique_id=1723752814 instance=ExtResource("2_s2ev0")]

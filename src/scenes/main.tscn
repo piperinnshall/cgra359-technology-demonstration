@@ -1,3 +1,7 @@
 [gd_scene format=3 uid="uid://dbqas71pqprm7"]
 
+[ext_resource type="PackedScene" uid="uid://vftuuwmcpoyg" path="res://src/scenes/coordinators/ui_coordinator.tscn" id="1_kkvs4"]
+
 [node name="Main" type="Node3D" unique_id=458388125]
+
+[node name="UICoordinator" parent="." unique_id=684115348 instance=ExtResource("1_kkvs4")]
