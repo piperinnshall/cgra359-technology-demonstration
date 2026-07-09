@@ -1,7 +1,12 @@
 [gd_scene format=3 uid="uid://dbqas71pqprm7"]
 
 [ext_resource type="PackedScene" uid="uid://vftuuwmcpoyg" path="res://src/scenes/coordinators/ui_coordinator.tscn" id="1_kkvs4"]
+[ext_resource type="Script" uid="uid://cou241b3jod3w" path="res://src/scripts/main.gd" id="1_rr2wm"]
+[ext_resource type="PackedScene" uid="uid://b4wo0prfssqxb" path="res://src/scenes/coordinators/game_coordinator.tscn" id="3_32aa5"]
 
-[node name="Main" type="Node3D" unique_id=458388125]
+[node name="Main" type="Node" unique_id=68733970]
+script = ExtResource("1_rr2wm")
 
 [node name="UICoordinator" parent="." unique_id=684115348 instance=ExtResource("1_kkvs4")]
+
+[node name="GameCoordinator" parent="." unique_id=1818800757 instance=ExtResource("3_32aa5")]
