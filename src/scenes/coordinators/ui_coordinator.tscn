@@ -3,20 +3,20 @@
 [ext_resource type="Script" uid="uid://b6ci02ybtqssp" path="res://src/scripts/coordinators/ui_coordinator.gd" id="1_plcdi"]
 [ext_resource type="PackedScene" uid="uid://c2pfhtrg575um" path="res://src/debug/debug_menu.tscn" id="2_nys84"]
 [ext_resource type="PackedScene" uid="uid://k6roufgxwpqj" path="res://src/scenes/ui/main_menu.tscn" id="2_s2ev0"]
-[ext_resource type="PackedScene" uid="uid://bpvk0684y5hmb" path="res://src/scenes/ui/heads_up_display.tscn" id="2_w3ii6"]
+[ext_resource type="PackedScene" uid="uid://bpvk0684y5hmb" path="res://src/scenes/ui/hud.tscn" id="2_w3ii6"]
 [ext_resource type="PackedScene" uid="uid://cnfkmepm6q0tt" path="res://src/scenes/ui/pause_menu.tscn" id="3_yjrxp"]
 
 [node name="UICoordinator" type="CanvasLayer" unique_id=684115348]
 script = ExtResource("1_plcdi")
 
-[node name="DebugMenu" parent="." unique_id=1518227386 instance=ExtResource("2_nys84")]
-visible = false
-
-[node name="HeadsUpDisplay" parent="." unique_id=2056813074 instance=ExtResource("2_w3ii6")]
+[node name="HUD" parent="." unique_id=2056813074 instance=ExtResource("2_w3ii6")]
 visible = false
 
 [node name="MainMenu" parent="." unique_id=1723752814 instance=ExtResource("2_s2ev0")]
 visible = false
 
 [node name="PauseMenu" parent="." unique_id=1645139295 instance=ExtResource("3_yjrxp")]
+visible = false
+
+[node name="DebugMenu" parent="." unique_id=1518227386 instance=ExtResource("2_nys84")]
 visible = false

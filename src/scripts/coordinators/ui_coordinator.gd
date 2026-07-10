@@ -2,16 +2,16 @@ extends CanvasLayer
 class_name UICoordinator
 
 enum State {
+    UNINITIALIZED = -1,
     MAIN_MENU,
     PAUSE_MENU,
     HUD,
-    NONE,
 }
 
-var state := State.NONE
+var state := State.UNINITIALIZED
 var _game_coordinator: GameCoordinator
 
-@onready var _hud := $HeadsUpDisplay
+@onready var _hud := $HUD
 @onready var _main_menu := $MainMenu
 @onready var _pause_menu := $PauseMenu
 @onready var _debug_menu := $DebugMenu
@@ -32,20 +32,16 @@ func setup(game_coordinator: GameCoordinator):
 func change(new_state: State) -> void:
     if state == new_state: 
         return
-        
-    if state != State.NONE:
+    if state != State.UNINITIALIZED:
         _ui[state].hide()
-        
-    if new_state != State.NONE:
-        _ui[new_state].show()
-        
+    _ui[new_state].show()
     state = new_state
     
 func debug() -> void:
     _debug_menu.visible = !_debug_menu.visible
         
 func _on_play_pressed() -> void: 
-    _game_coordinator.play()
+    _game_coordinator.on_play_pressed()
     
 func _on_quit_pressed() -> void: 
-    _game_coordinator.quit()
+    _game_coordinator.on_quit_pressed()
