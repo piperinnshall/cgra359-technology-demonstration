@@ -14,6 +14,7 @@ var _game_coordinator: GameCoordinator
 @onready var _hud := $HeadsUpDisplay
 @onready var _main_menu := $MainMenu
 @onready var _pause_menu := $PauseMenu
+@onready var _debug_menu := $DebugMenu
 @onready var _ui := {
     State.MAIN_MENU: _main_menu,
     State.PAUSE_MENU: _pause_menu,
@@ -39,6 +40,9 @@ func change(new_state: State) -> void:
         _ui[new_state].show()
         
     state = new_state
+    
+func debug() -> void:
+    _debug_menu.visible = !_debug_menu.visible
         
 func _on_play_pressed() -> void: 
     _game_coordinator.play()

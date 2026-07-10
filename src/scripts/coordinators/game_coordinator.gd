@@ -10,6 +10,7 @@ var _ui_coordinator: UICoordinator
 func _ready() -> void:
     process_mode = Node.PROCESS_MODE_ALWAYS
     InputManager.pause_pressed.connect(_pause)
+    InputManager.debug_pressed.connect(_debug)
     
 func setup(scene_coordinator: SceneCoordinator, ui_coordinator: UICoordinator) -> void:
     _scene_coordinator = scene_coordinator
@@ -31,8 +32,11 @@ func _pause() -> void:
     if _ui_coordinator.state != UIState.HUD and _ui_coordinator.state != UIState.PAUSE_MENU:
         return
 
-    var paused = _ui_coordinator.state != UIState.PAUSE_MENU
-    var change = UIState.PAUSE_MENU if paused else UIState.HUD
-    Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if paused else Input.MOUSE_MODE_CAPTURED
+    var paused = _ui_coordinator.state == UIState.PAUSE_MENU
+    var change = UIState.HUD if paused else UIState.PAUSE_MENU
+    Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if paused else Input.MOUSE_MODE_VISIBLE
     get_tree().paused = paused
     _ui_coordinator.change(change)
+    
+func _debug() -> void:
+    _ui_coordinator.debug()
