@@ -6,12 +6,12 @@ signal quit_pressed
 @onready var _play_button := $VBoxContainer/Play
 @onready var _quit_button := $VBoxContainer/Quit
 
-func _ready():
+func _ready() -> void:
     _play_button.pressed.connect(_on_play_pressed)
     _quit_button.pressed.connect(_on_quit_pressed)
     
-func _on_play_pressed():
+func _on_play_pressed() -> void:
     play_pressed.emit()
     
-func _on_quit_pressed():
+func _on_quit_pressed() -> void:
     quit_pressed.emit()

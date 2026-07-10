@@ -2,8 +2,19 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ijnqc"]
 
-[node name="Player" type="Node3D" unique_id=1703816825]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_05qlf"]
+
+[node name="Player" type="CharacterBody3D" unique_id=2081480800]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=818339042]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0039072037, 0, 0)
 mesh = SubResource("CapsuleMesh_ijnqc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1953891929]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0039072037, 0, 0)
+shape = SubResource("CapsuleShape3D_05qlf")
+
+[node name="HeadPivot" type="Node3D" parent="." unique_id=851650366]
+
+[node name="Camera3D" type="Camera3D" parent="HeadPivot" unique_id=1203488520]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.73632157, 0)

@@ -8,8 +8,8 @@ enum State {
     NONE,
 }
 
+var state := State.NONE
 var _game_coordinator: GameCoordinator
-var _state := State.NONE
 
 @onready var _hud := $HeadsUpDisplay
 @onready var _main_menu := $MainMenu
@@ -20,22 +20,28 @@ var _state := State.NONE
     State.HUD: _hud,
 }
 
+func _ready() -> void:
+    process_mode = Node.PROCESS_MODE_ALWAYS
+
 func setup(game_coordinator: GameCoordinator):
     _game_coordinator = game_coordinator
     _main_menu.play_pressed.connect(_on_play_pressed)
     _main_menu.quit_pressed.connect(_on_quit_pressed)
 
-func change(new_state: State):
-    if _state == new_state: 
+func change(new_state: State) -> void:
+    if state == new_state: 
         return
-    if _state != State.NONE:
-        _ui[_state].hide()
+        
+    if state != State.NONE:
+        _ui[state].hide()
+        
     if new_state != State.NONE:
         _ui[new_state].show()
-    _state = new_state
         
-func _on_play_pressed(): 
+    state = new_state
+        
+func _on_play_pressed() -> void: 
     _game_coordinator.play()
     
-func _on_quit_pressed(): 
+func _on_quit_pressed() -> void: 
     _game_coordinator.quit()
