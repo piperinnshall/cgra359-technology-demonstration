@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rwhmm")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1793746539]
+[node name="Background" type="ColorRect" parent="." unique_id=1793746539]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

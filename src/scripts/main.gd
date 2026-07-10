@@ -6,4 +6,4 @@ extends Node
 
 func _ready() -> void:
     _ui_coordinator.setup(_game_coordinator)
-    _game_coordinator.setup(_scene_coordinator)
+    _game_coordinator.setup(_scene_coordinator, _ui_coordinator)
