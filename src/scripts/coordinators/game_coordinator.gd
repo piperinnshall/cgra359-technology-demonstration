@@ -33,8 +33,7 @@ func on_play_pressed() -> void:
     Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
     _scenes.change(
         START_LEVEL, 
-        func(): 
-            _ui.change(UIState.HUD)
+        func(): _ui.change(UIState.HUD)
     )
 
 func on_quit_pressed() -> void:
