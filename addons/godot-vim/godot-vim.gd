@@ -1405,7 +1405,8 @@ class EditorAdaptor:
         return Position.new(result.y, result.x)
 
     func has_focus() -> bool:
-        return code_editor != null and is_instance_valid(code_editor) and code_editor.has_focus()
+        return code_editor.has_focus()
+
 
 class CommandDispatcher:
     var key_map : Array[Dictionary]
@@ -1622,3 +1623,4 @@ class CommandDispatcher:
             print("  Motion: %s %s to %s" % [motion, motion_args, result])
 
         return result
+

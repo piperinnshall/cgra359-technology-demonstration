@@ -15,30 +15,27 @@ func _ready() -> void:
 func setup(scene_coordinator: SceneCoordinator, ui_coordinator: UICoordinator) -> void:
     _scene_coordinator = scene_coordinator
     _ui_coordinator = ui_coordinator
-    _ui_coordinator.change(UIState.MAIN_MENU)
-    
-func on_play_pressed() -> void:
-    _scene_coordinator.change(
-        START_LEVEL, 
-        func(): 
-            _ui_coordinator.change(UIState.HUD)
-            Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-    )
-
-func on_quit_pressed() -> void:
-    get_tree().quit()
     
 func _on_pause_pressed() -> void:
     if _ui_coordinator.state != UIState.HUD and _ui_coordinator.state != UIState.PAUSE_MENU:
         return
 
-    var is_currently_paused = _ui_coordinator.state == UIState.PAUSE_MENU
-    var next_state = UIState.HUD if is_currently_paused else UIState.PAUSE_MENU
-    
-    Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if is_currently_paused else Input.MOUSE_MODE_VISIBLE
-    get_tree().paused = not is_currently_paused
-    
-    _ui_coordinator.change(next_state)
+    var paused = _ui_coordinator.state == UIState.PAUSE_MENU
+    var new_state = UIState.HUD if paused else UIState.PAUSE_MENU
+    Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if paused else Input.MOUSE_MODE_VISIBLE
+    get_tree().paused = not paused
+    _ui_coordinator.change(new_state)
     
 func _on_debug_pressed() -> void:
     _ui_coordinator.debug()
+    
+func on_play_pressed() -> void:
+    Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+    _scene_coordinator.change(
+        START_LEVEL, 
+        func(): 
+            _ui_coordinator.change(UIState.HUD)
+    )
+
+func on_quit_pressed() -> void:
+    get_tree().quit()

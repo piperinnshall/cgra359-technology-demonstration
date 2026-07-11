@@ -17,7 +17,7 @@ mesh = SubResource("CapsuleMesh_ijnqc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0039072037, 0, 0)
 shape = SubResource("CapsuleShape3D_05qlf")
 
-[node name="HeadPivot" type="Node3D" parent="." unique_id=851650366]
+[node name="Pivot" type="Node3D" parent="." unique_id=851650366]
 
-[node name="Camera" type="Camera3D" parent="HeadPivot" unique_id=1203488520]
+[node name="Camera" type="Camera3D" parent="Pivot" unique_id=1203488520]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.73632157, 0)

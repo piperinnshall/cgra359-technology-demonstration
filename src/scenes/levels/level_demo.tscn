@@ -29,6 +29,9 @@ environment = SubResource("Environment_rkge7")
 
 [node name="Player" parent="." unique_id=1703816825 instance=ExtResource("1_llkpo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.907725, 0)
+sensitivity = null
+max_delta = null
+jump_velocity = null
 
 [node name="Geometry" type="Node" parent="." unique_id=1184878265]
 

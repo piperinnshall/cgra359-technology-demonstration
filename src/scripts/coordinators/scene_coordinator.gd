@@ -26,7 +26,7 @@ func _process(_delta: float) -> void:
     match status:
         ResourceLoader.THREAD_LOAD_LOADED:
             var scene := ResourceLoader.load_threaded_get(_loading_path)
-            if scene:
+            if scene is PackedScene:
                 _change(scene)
             else: 
                 push_error("Loaded resource is not a PackedScene: " + _loading_path)
@@ -47,8 +47,8 @@ func _change(scene: PackedScene) -> void:
     var instance := scene.instantiate()
     get_tree().root.add_child(instance)
     _current_scene = instance
+    get_tree().current_scene = instance
     
     if _loading_callable.is_valid():
         _loading_callable.call()
-       
     
