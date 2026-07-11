@@ -3,8 +3,8 @@ extends Control
 signal play_pressed
 signal quit_pressed
 
-@onready var _play_button := $VBoxContainer/Play
-@onready var _quit_button := $VBoxContainer/Quit
+@onready var _play_button: Button = $VBoxContainer/Play
+@onready var _quit_button: Button = $VBoxContainer/Quit
 
 func _ready() -> void:
     _play_button.pressed.connect(_on_play_pressed)

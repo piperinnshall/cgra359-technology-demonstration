@@ -1,5 +1,5 @@
 extends Node
-class_name SceneCoordinator
+class_name ScenesCoordinator
 
 var _current_scene: Node3D
 var _loading_path := ""

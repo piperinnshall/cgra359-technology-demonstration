@@ -10,10 +10,10 @@ enum State {
 var _game_coordinator: GameCoordinator
 var state := State.MAIN_MENU
 
-@onready var _debug_menu := $DebugMenu
-@onready var _hud := $HUD
-@onready var _main_menu := $MainMenu
-@onready var _pause_menu := $PauseMenu
+@onready var _debug_menu: Control = $DebugMenu
+@onready var _hud: Control = $HUD
+@onready var _main_menu: Control = $MainMenu
+@onready var _pause_menu: Control = $PauseMenu
 @onready var _ui := {
     State.HUD: _hud,
     State.MAIN_MENU: _main_menu,

@@ -24,6 +24,6 @@ func _physics_process(delta: float) -> void:
         velocity.y = jump_velocity
         
     var input := Input.get_vector("player_left", "player_right", "player_forward", "player_back")
-    var _direction := (pivot.transform.basis * Vector3(input.x, 0, input.y)).normalized() as Vector3
+    var _direction := (pivot.transform.basis * Vector3(input.x, 0, input.y)).normalized()
     
     move_and_slide()
