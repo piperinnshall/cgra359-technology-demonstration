@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bdew20lohbi3w"]
+
+[ext_resource type="Script" uid="uid://cg5n4twbj7u2l" path="res://src/scripts/blockout/grey_box.gd" id="1_0ck32"]
+
+[node name="GreyBox" type="CSGBox3D" unique_id=1742231401]
+script = ExtResource("1_0ck32")
