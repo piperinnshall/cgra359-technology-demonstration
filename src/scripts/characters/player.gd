@@ -92,19 +92,28 @@ func _try_switch_gravity() -> void:
         return
 
     var new_up := -new_gravity_dir
-    var delta_rotation := _rotation_between(current_up, new_up)
+
+    var roll_axis := -camera.global_transform.basis.z
+    roll_axis = roll_axis.slide(current_up).normalized()
+
+    var delta_rotation := _rotation_between(
+        current_up,
+        new_up,
+        roll_axis
+    )
+
     var current_quat := Quaternion(global_transform.basis.orthonormalized())
     target_orientation = (delta_rotation * current_quat).normalized()
 
 
-func _rotation_between(from: Vector3, to: Vector3) -> Quaternion:
+func _rotation_between(from: Vector3, to: Vector3, preferred_axis: Vector3) -> Quaternion:
     var dot := from.dot(to)
+
+    # Opposite directions require manually choosing the rotation axis.
     if dot < -0.9999:
-        var axis := from.cross(Vector3.RIGHT)
-        if axis.length() < 0.001:
-            axis = from.cross(Vector3.FORWARD)
-        axis = axis.normalized()
+        var axis := preferred_axis.normalized()
         return Quaternion(axis, PI)
+
     return Quaternion(from, to)
 
 func _snap_to_cardinal(v: Vector3) -> Vector3:

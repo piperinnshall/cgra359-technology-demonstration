@@ -45,11 +45,13 @@ const COLORS := {
         texture = value
         _update_material()
       
+@export var triplanar := true:
+    set(value):
+        triplanar = value
+        _update_material()
 
 func _ready() -> void:
     _update_material()
-    
-    
 
 func _update_material() -> void:
     var color_folder = COLORS[color]
@@ -62,6 +64,6 @@ func _update_material() -> void:
     var new_material := StandardMaterial3D.new()
     new_material.albedo_texture = load(path)
     new_material.uv1_scale = Vector3(1, -1, 1)
-    new_material.uv1_triplanar = true
-    new_material.uv1_world_triplanar = true
+    new_material.uv1_triplanar = triplanar
+    new_material.uv1_world_triplanar = triplanar
     material = new_material

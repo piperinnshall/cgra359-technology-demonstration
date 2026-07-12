@@ -21,6 +21,8 @@ InputManager="*uid://das36fd0ut52r"
 
 [display]
 
+window/size/mode=2
+window/size/resizable=false
 window/size/borderless=true
 
 [editor_plugins]

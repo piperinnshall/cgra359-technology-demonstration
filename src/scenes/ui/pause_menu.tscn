@@ -37,6 +37,6 @@ alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer" unique_id=342267077]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 80
 text = "PAUSED"
 horizontal_alignment = 1
