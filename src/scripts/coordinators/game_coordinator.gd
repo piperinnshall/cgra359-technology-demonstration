@@ -1,10 +1,9 @@
 extends Node
 class_name GameCoordinator
 
-const UIState := UICoordinator.State
-const START_LEVEL := "res://src/scenes/levels/level_demo.tscn"
+const UIState := UICoordinator.State 
 
-var _scenes: ScenesCoordinator
+var _world: WorldCoordinator
 var _ui: UICoordinator
 
 func _ready() -> void:
@@ -12,9 +11,9 @@ func _ready() -> void:
     InputManager.pause_pressed.connect(_on_pause_pressed)
     InputManager.debug_pressed.connect(_on_debug_pressed)
     
-func setup(scenes: ScenesCoordinator, ui: UICoordinator) -> void:
-    _scenes = scenes
-    _ui= ui
+func setup(ui: UICoordinator, world: WorldCoordinator) -> void:
+    _ui = ui
+    _world = world
     
 func _on_pause_pressed() -> void:
     if _ui.state != UIState.HUD and _ui.state != UIState.PAUSE_MENU:
@@ -31,8 +30,8 @@ func _on_debug_pressed() -> void:
     
 func on_play_pressed() -> void:
     Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-    _scenes.change(
-        START_LEVEL, 
+    _world.change(
+        WorldCoordinator.Level.START,
         func(): _ui.change(UIState.HUD)
     )
 

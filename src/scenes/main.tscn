@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cou241b3jod3w" path="res://src/scripts/main.gd" id="1_rr2wm"]
 [ext_resource type="PackedScene" uid="uid://clfsucjc5vur8" path="res://src/scenes/coordinators/scenes_coordinator.tscn" id="3_5dlwx"]
 [ext_resource type="PackedScene" uid="uid://b4wo0prfssqxb" path="res://src/scenes/coordinators/game_coordinator.tscn" id="3_32aa5"]
+[ext_resource type="PackedScene" uid="uid://dgo0e51pr70tq" path="res://src/scenes/coordinators/world_coordinator.tscn" id="5_o81g6"]
 
 [node name="Main" type="Node" unique_id=68733970]
 script = ExtResource("1_rr2wm")
@@ -13,3 +14,5 @@ script = ExtResource("1_rr2wm")
 [node name="ScenesCoordinator" parent="." unique_id=1148662172 instance=ExtResource("3_5dlwx")]
 
 [node name="UICoordinator" parent="." unique_id=684115348 instance=ExtResource("1_kkvs4")]
+
+[node name="WorldCoordinator" parent="." unique_id=1307567386 instance=ExtResource("5_o81g6")]

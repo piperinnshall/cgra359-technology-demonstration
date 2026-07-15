@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dgo0e51pr70tq"]
+
+[ext_resource type="Script" uid="uid://co3r12hvvjyvk" path="res://src/scripts/coordinators/world_coordinator.gd" id="1_jhqvm"]
+[ext_resource type="PackedScene" uid="uid://biqt6mobk7f7y" path="res://src/scenes/characters/player.tscn" id="2_3moc1"]
+[ext_resource type="PackedScene" uid="uid://c062co0ome4xn" path="res://src/scenes/gravity/gravity_manager.tscn" id="3_ofsh0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3moc1"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_ofsh0"]
+sky_material = SubResource("ProceduralSkyMaterial_3moc1")
+
+[sub_resource type="Environment" id="Environment_rd4xk"]
+background_mode = 2
+sky = SubResource("Sky_ofsh0")
+glow_enabled = true
+
+[node name="WorldCoordinator" type="Node3D" unique_id=911806292]
+script = ExtResource("1_jhqvm")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1252006731]
+environment = SubResource("Environment_rd4xk")
+
+[node name="Player" parent="." unique_id=2081480800 instance=ExtResource("2_3moc1")]
+
+[node name="GravityManager" parent="." unique_id=1595495015 instance=ExtResource("3_ofsh0")]

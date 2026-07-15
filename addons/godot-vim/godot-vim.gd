@@ -1623,4 +1623,3 @@ class CommandDispatcher:
             print("  Motion: %s %s to %s" % [motion, motion_args, result])
 
         return result
-

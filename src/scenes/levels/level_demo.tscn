@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://ba8lbw4tl86vv"]
 
-[ext_resource type="PackedScene" uid="uid://biqt6mobk7f7y" path="res://src/scenes/characters/player.tscn" id="1_llkpo"]
 [ext_resource type="Script" uid="uid://brd3tf6hn5aom" path="res://src/scripts/levels/level_demo.gd" id="1_muoeo"]
 [ext_resource type="PackedScene" uid="uid://bdew20lohbi3w" path="res://src/scenes/blockout/grey_box.tscn" id="2_rkge7"]
 [ext_resource type="Texture2D" uid="uid://dnjntpprwedh3" path="res://assets/art/third-party/prototype-textures/png/green/texture_09.png" id="3_rkge7"]
@@ -8,20 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://djx7te6cjp3j6" path="res://assets/art/third-party/prototype-textures/png/purple/texture_05.png" id="6_lxv86"]
 [ext_resource type="Texture2D" uid="uid://dowhy66n40yyh" path="res://assets/art/third-party/prototype-textures/png/orange/texture_13.png" id="7_lxv86"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_llkpo"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-
-[sub_resource type="Sky" id="Sky_dxec7"]
-sky_material = SubResource("ProceduralSkyMaterial_llkpo")
-
-[sub_resource type="Environment" id="Environment_rkge7"]
-background_mode = 2
-sky = SubResource("Sky_dxec7")
-glow_enabled = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_san5u"]
+albedo_texture = ExtResource("3_rkge7")
+uv1_scale = Vector3(1, -1, 1)
+uv1_triplanar = true
+uv1_world_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lxv86"]
-albedo_texture = ExtResource("3_rkge7")
+albedo_texture = ExtResource("5_lxv86")
 uv1_scale = Vector3(1, -1, 1)
 uv1_triplanar = true
 uv1_world_triplanar = true
@@ -39,20 +32,20 @@ uv1_triplanar = true
 uv1_world_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eo453"]
-albedo_texture = ExtResource("5_lxv86")
-uv1_scale = Vector3(1, -1, 1)
-uv1_triplanar = true
-uv1_world_triplanar = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qyuxs"]
 albedo_texture = ExtResource("6_lxv86")
 uv1_scale = Vector3(1, -1, 1)
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wspml"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qyuxs"]
 albedo_texture = ExtResource("7_lxv86")
 uv1_scale = Vector3(1, -1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wspml"]
+albedo_texture = ExtResource("5_lxv86")
+uv1_scale = Vector3(1, -1, 1)
+uv1_triplanar = true
+uv1_world_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eaqd5"]
 albedo_texture = ExtResource("5_lxv86")
@@ -67,28 +60,25 @@ uv1_triplanar = true
 uv1_world_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qkn2b"]
-albedo_texture = ExtResource("5_lxv86")
-uv1_scale = Vector3(1, -1, 1)
-uv1_triplanar = true
-uv1_world_triplanar = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n5sjl"]
 albedo_texture = ExtResource("6_lxv86")
 uv1_scale = Vector3(1, -1, 1)
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kd1wb"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n5sjl"]
 albedo_texture = ExtResource("3_rkge7")
 uv1_scale = Vector3(1, -1, 1)
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ijnqc"]
-size = Vector3(7, 1, 2)
+[sub_resource type="BoxShape3D" id="BoxShape3D_b025m"]
+size = Vector3(66, 73, 1)
 
 [node name="LevelDemo" type="Node3D" unique_id=969973468]
 script = ExtResource("1_muoeo")
+
+[node name="PlayerSpawn" type="Marker3D" parent="." unique_id=1750786387]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=1047871334]
 transform = Transform3D(-0.70710677, -0.07723104, 0.70287657, -0.7071069, 0.077231064, -0.7028764, -2.9802322e-08, -0.9940175, -0.1092212, 46, 50.64039, -2.18054)
@@ -96,54 +86,49 @@ transform = Transform3D(-0.70710677, -0.07723104, 0.70287657, -0.7071069, 0.0772
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1652394725]
 transform = Transform3D(0.8660254, -0.3336875, -0.37236091, 0.5, 0.5779637, 0.644948, 0, -0.74472183, 0.667375, 0, 33.307156, 6.8690004)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1860513126]
-environment = SubResource("Environment_rkge7")
-
-[node name="Player" parent="." unique_id=1703816825 instance=ExtResource("1_llkpo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5077249, 4)
-
 [node name="Geometry" type="CSGCombiner3D" parent="." unique_id=912907362]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
 use_collision = true
 
 [node name="GreyBox1" parent="Geometry" unique_id=1742231401 instance=ExtResource("2_rkge7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.5)
-size = Vector3(6, 1, 22)
-material = SubResource("StandardMaterial3D_lxv86")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+size = Vector3(6, 1, 33)
+material = SubResource("StandardMaterial3D_san5u")
 color = 1
 texture = 8
 
 [node name="GreyBox2" parent="Geometry" unique_id=572524690 instance=ExtResource("2_rkge7")]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -3.5, 3.5, -4.5)
-size = Vector3(8, 1, 22)
-material = SubResource("StandardMaterial3D_fq0ke")
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -3.5, 3.5, 1)
+size = Vector3(8, 1, 33)
+material = SubResource("StandardMaterial3D_lxv86")
 color = 3
 texture = 1
 
 [node name="GreyBox3" parent="Geometry" unique_id=844864760 instance=ExtResource("2_rkge7")]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 3.5, 3.5, -1.5)
-size = Vector3(8, 1, 16)
-material = SubResource("StandardMaterial3D_8pxgm")
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 3.5, 3.5, 4)
+size = Vector3(8, 1, 27)
+material = SubResource("StandardMaterial3D_fq0ke")
 color = 3
 texture = 1
 
 [node name="GreyBox4" parent="Geometry" unique_id=1950993457 instance=ExtResource("2_rkge7")]
-transform = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 0, 3.5, 6)
+transform = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 0, 3.5, 17)
 size = Vector3(6, 1, 6)
-material = SubResource("StandardMaterial3D_eo453")
+material = SubResource("StandardMaterial3D_8pxgm")
 color = 3
 texture = 1
 
 [node name="GreyBox5" parent="Geometry" unique_id=1935115767 instance=ExtResource("2_rkge7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -4.5)
-size = Vector3(6, 1, 22)
-material = SubResource("StandardMaterial3D_qyuxs")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 1)
+size = Vector3(6, 1, 33)
+material = SubResource("StandardMaterial3D_eo453")
 color = 4
 texture = 4
 
 [node name="Window" parent="Geometry" unique_id=1212657056 instance=ExtResource("2_rkge7")]
 transform = Transform3D(-1, -2.9802322e-08, 0, 2.9802322e-08, -1, 0, 0, 0, 1, 0, 3.5, -15)
 size = Vector3(6, 6, 1)
-material = SubResource("StandardMaterial3D_wspml")
+material = SubResource("StandardMaterial3D_qyuxs")
 color = 3
 texture = 12
 triplanar = false
@@ -151,40 +136,72 @@ triplanar = false
 [node name="GreyBox6" parent="Geometry" unique_id=121148193 instance=ExtResource("2_rkge7")]
 transform = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 5.5, 3.5, -15)
 size = Vector3(8, 1, 5)
-material = SubResource("StandardMaterial3D_eaqd5")
+material = SubResource("StandardMaterial3D_wspml")
 color = 3
 texture = 1
 
 [node name="GreyBox7" parent="Geometry" unique_id=709610399 instance=ExtResource("2_rkge7")]
-transform = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 15.5, 3.5, -15)
+transform = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 24.5, 3.5, -15)
 size = Vector3(8, 1, 5)
-material = SubResource("StandardMaterial3D_fqq1m")
+material = SubResource("StandardMaterial3D_eaqd5")
 color = 3
 texture = 1
 
 [node name="GreyBox8" parent="Geometry" unique_id=408480244 instance=ExtResource("2_rkge7")]
-transform = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 10.5, 3.5, -9)
-size = Vector3(8, 1, 15)
-material = SubResource("StandardMaterial3D_qkn2b")
+transform = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 15, 3.5, -9)
+size = Vector3(8, 1, 24)
+material = SubResource("StandardMaterial3D_fqq1m")
 color = 3
 texture = 1
 
 [node name="GreyBox10" parent="Geometry" unique_id=1524385419 instance=ExtResource("2_rkge7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 7, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 7, -12)
 size = Vector3(5, 1, 5)
-material = SubResource("StandardMaterial3D_n5sjl")
+material = SubResource("StandardMaterial3D_qkn2b")
 color = 4
 texture = 4
 
 [node name="GreyBox13" parent="Geometry" unique_id=629882570 instance=ExtResource("2_rkge7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 0, -12)
 size = Vector3(5, 1, 5)
-material = SubResource("StandardMaterial3D_kd1wb")
+material = SubResource("StandardMaterial3D_n5sjl")
 color = 1
 texture = 8
 
-[node name="Area3D" type="Area3D" parent="." unique_id=155835697]
+[node name="DeathBox" type="Area3D" parent="." unique_id=1792755857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1175315580]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -8.5)
-shape = SubResource("BoxShape3D_ijnqc")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathBox" unique_id=355550580]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 6.5, 17)
+shape = SubResource("BoxShape3D_b025m")
+debug_color = Color(0.9518047, 0, 0.18320847, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="DeathBox" unique_id=330308587]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 6.5, -35)
+shape = SubResource("BoxShape3D_b025m")
+debug_color = Color(0.9518047, 0, 0.18320847, 1)
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="DeathBox" unique_id=556445130]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -20, 6.5, -7)
+shape = SubResource("BoxShape3D_b025m")
+debug_color = Color(0.9518047, 0, 0.18320847, 1)
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="DeathBox" unique_id=1500464265]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 45, 6.5, -7)
+shape = SubResource("BoxShape3D_b025m")
+debug_color = Color(0.9518047, 0, 0.18320847, 1)
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="DeathBox" unique_id=1846905499]
+transform = Transform3D(1.9106855e-15, 1, 4.371139e-08, 4.371139e-08, -4.371139e-08, 1, 1, 0, -4.371139e-08, 17, 27.5, -7)
+shape = SubResource("BoxShape3D_b025m")
+debug_color = Color(0.9518047, 0, 0.18320847, 1)
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="DeathBox" unique_id=288874475]
+transform = Transform3D(1.9106855e-15, 1, 4.371139e-08, 4.371139e-08, -4.371139e-08, 1, 1, 0, -4.371139e-08, 17, -21.5, -7)
+shape = SubResource("BoxShape3D_b025m")
+debug_color = Color(0.9518047, 0, 0.18320847, 1)
+
+[node name="Label3D" type="Label3D" parent="." unique_id=2140965927]
+transform = Transform3D(-4.371139e-08, 0, -1, -1, -4.371139e-08, 4.371139e-08, -4.371139e-08, 1, 1.9106855e-15, 23, 3.8, -26)
+pixel_size = 0.02
+text = "GET HERE!"
