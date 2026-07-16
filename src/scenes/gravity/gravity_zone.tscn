@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cmquosr3akj76"]
+
+[ext_resource type="Script" uid="uid://dbfjhcug7sflf" path="res://src/scripts/gravity/gravity_zone.gd" id="1_awf7u"]
+
+[node name="GravityZone" type="Node3D" unique_id=681804853]
+script = ExtResource("1_awf7u")

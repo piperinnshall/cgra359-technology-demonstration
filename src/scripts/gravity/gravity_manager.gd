@@ -3,7 +3,6 @@ class_name GravityManager
 
 var _player: Player
 
-
 func setup(player: Player) -> void:
     _player = player
 

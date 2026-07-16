@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c062co0ome4xn"]
 
-[ext_resource type="Script" uid="uid://0tc1xiu8rkqp" path="res://src/scripts/gravity_manager/gravity_manager.gd" id="1_71hpn"]
+[ext_resource type="Script" uid="uid://0tc1xiu8rkqp" path="res://src/scripts/gravity/gravity_manager.gd" id="1_71hpn"]
 
 [node name="GravityManager" type="Node" unique_id=1595495015]
 script = ExtResource("1_71hpn")

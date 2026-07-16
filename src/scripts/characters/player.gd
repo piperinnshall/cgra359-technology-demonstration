@@ -4,13 +4,11 @@ class_name Player
 const MAX_MOUSE_DELTA := 50.0
 
 @export var sensitivity := 0.005
-
 @export_category("Movement")
 @export var speed := 4.0
 @export var acceleration := 60.0
 @export var jump_velocity := 4.5
 @export var air_drag := 2.0
-
 @export_category("Gravity")
 @export var gravity_strength := 9.8
 
@@ -102,11 +100,19 @@ func unlock() -> void:
 func set_gravity_direction(gravity_direction: Vector3) -> void:
     var new_up := -gravity_direction
     var current_up := global_transform.basis.y.normalized()
-
-    var player_rotation := Quaternion(current_up, new_up)
-
-    global_transform.basis = (
-        Basis(player_rotation) * global_transform.basis
-    ).orthonormalized()
-
+    
+    var roll_axis := -camera.global_transform.basis.z
+    roll_axis = roll_axis.slide(current_up).normalized()
+    
+    var delta_rotation := _rotation_between(current_up, new_up, roll_axis)
+    var current_quat := Quaternion(global_transform.basis.orthonormalized())
+    global_transform.basis = Basis((delta_rotation * current_quat).normalized()).orthonormalized()
+    
     up_direction = new_up
+
+func _rotation_between(from: Vector3, to: Vector3, preferred_axis: Vector3) -> Quaternion:
+    var dot := from.dot(to)
+    if dot < -0.9999:
+        var axis := preferred_axis.normalized()
+        return Quaternion(axis, PI)
+    return Quaternion(from, to)

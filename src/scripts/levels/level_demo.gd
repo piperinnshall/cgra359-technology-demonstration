@@ -14,6 +14,6 @@ func setup(player: Player) -> void:
     _player.rotation = player_spawn.rotation
 
 func _on_body_entered(body: Node) -> void:
-    if body == _player:
+    if body is Player:
         _player.global_position = Vector3(0.0, 1.5, 0.0)
         _player.velocity = Vector3.ZERO
