@@ -6,7 +6,6 @@ var _player: Player
 func setup(player: Player) -> void:
     _player = player
 
-
 func player_flip() -> void:
     if _player == null:
         return
@@ -24,7 +23,6 @@ func player_flip() -> void:
 
     _player.set_gravity_direction(new_gravity_dir)
     _player.unlock()
-
 
 func _calculate_gravity_direction() -> Vector3:
     var forward := -_player.camera.global_transform.basis.z

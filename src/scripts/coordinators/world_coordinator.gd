@@ -20,12 +20,10 @@ var _change_callback: Callable
 func _ready() -> void:
     process_mode = Node.PROCESS_MODE_PAUSABLE
 
-
 func setup(scenes: ScenesCoordinator) -> void:
     _scenes = scenes
     _gravity_manager.setup(_player)
     _player.setup(_gravity_manager)
-
 
 func change(new_level: Level, callback: Callable = Callable()) -> void:
     if not LEVEL_PATHS.has(new_level):
@@ -39,7 +37,6 @@ func change(new_level: Level, callback: Callable = Callable()) -> void:
         LEVEL_PATHS[new_level],
         _on_level_loaded
     )
-
 
 func _on_level_loaded(scene: PackedScene) -> void:
     if current_level:
