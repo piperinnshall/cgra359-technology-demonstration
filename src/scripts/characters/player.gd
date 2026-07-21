@@ -1,11 +1,9 @@
 extends CharacterBody3D
-
 class_name Player
 
 const MAX_MOUSE_DELTA := 50.0
 
 @export var sensitivity := 0.005
-
 @export_category("Movement")
 @export var speed := 4.0
 @export var acceleration := 60.0
@@ -18,15 +16,13 @@ const MAX_MOUSE_DELTA := 50.0
 @export var _rotation_radius := 20.0
 
 var _gravity_manager: GravityManager
-
 var _locked := false
-
 var _visual_start := Quaternion.IDENTITY
 var _visual_target := Quaternion.IDENTITY
 var _visual_progress := 1.0
-
 var can_rotate := false
 
+# TODO: Split the Harnesss into 2 (rotate Mesh faster than Camera on flip)
 @onready var harness: Node3D = $Harness
 @onready var pivot: Node3D = $Harness/Pivot
 @onready var camera: Camera3D = $Harness/Pivot/Camera

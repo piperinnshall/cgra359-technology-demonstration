@@ -47,6 +47,9 @@ func _on_level_loaded(scene: PackedScene) -> void:
 
     if current_level.has_method("setup"):
         current_level.setup(_player)
+        
+    if current_level.has_method("zones"):
+        _gravity_manager.set_zones(current_level.zones())
 
     if _change_callback.is_valid():
         _change_callback.call()

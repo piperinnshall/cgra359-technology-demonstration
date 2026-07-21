@@ -8,8 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://cmquosr3akj76" path="res://src/scenes/gravity/gravity_zone.tscn" id="7_fq0ke"]
 [ext_resource type="Texture2D" uid="uid://dowhy66n40yyh" path="res://assets/art/third-party/prototype-textures/png/orange/texture_13.png" id="7_lxv86"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_ijnqc"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lxv86"]
 albedo_texture = ExtResource("6_lxv86")
 uv1_scale = Vector3(1, -1, 1)
@@ -83,31 +81,14 @@ uv1_world_triplanar = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_b025m"]
 size = Vector3(66, 73, 1)
 
-[node name="LevelDemo" type="Node3D" unique_id=969973468]
+[sub_resource type="SphereShape3D" id="SphereShape3D_ijnqc"]
+
+[node name="LevelDemo" type="Node3D" unique_id=969973468 node_paths=PackedStringArray("gravity_zones")]
 script = ExtResource("1_muoeo")
-
-[node name="GravityZone" parent="." unique_id=681804853 node_paths=PackedStringArray("origin", "zone") instance=ExtResource("7_fq0ke")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 4, -26.2)
-direction = 1
-origin = NodePath("Origin")
-zone = NodePath("Zone2")
-
-[node name="Origin" type="Marker3D" parent="GravityZone" unique_id=2096950868]
-
-[node name="Zone2" type="Area3D" parent="GravityZone" unique_id=295366092]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GravityZone/Zone2" unique_id=389497465]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
-shape = SubResource("SphereShape3D_ijnqc")
+gravity_zones = [NodePath("GravityZones/GravityZone")]
 
 [node name="PlayerSpawn" type="Marker3D" parent="." unique_id=1750786387]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=1047871334]
-transform = Transform3D(-0.70710677, -0.07723104, 0.70287657, -0.7071069, 0.077231064, -0.7028764, -2.9802322e-08, -0.9940175, -0.1092212, 46, 50.64039, -2.18054)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1652394725]
-transform = Transform3D(0.8660254, -0.3336875, -0.37236091, 0.5, 0.5779637, 0.644948, 0, -0.74472183, 0.667375, 0, 33.307156, 6.8690004)
 
 [node name="Geometry" type="CSGCombiner3D" parent="." unique_id=912907362]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
@@ -234,6 +215,30 @@ debug_color = Color(0.9518047, 0, 0.18320847, 1)
 transform = Transform3D(1.9106855e-15, 1, 4.371139e-08, 4.371139e-08, -4.371139e-08, 1, 1, 0, -4.371139e-08, 17, -21.5, -7)
 shape = SubResource("BoxShape3D_b025m")
 debug_color = Color(0.9518047, 0, 0.18320847, 1)
+
+[node name="Lighting" type="Node" parent="." unique_id=554272674]
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Lighting" unique_id=1047871334]
+transform = Transform3D(-0.70710677, -0.07723104, 0.70287657, -0.7071069, 0.077231064, -0.7028764, -2.9802322e-08, -0.9940175, -0.1092212, 46, 50.64039, -2.18054)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" unique_id=1652394725]
+transform = Transform3D(0.8660254, -0.3336875, -0.37236091, 0.5, 0.5779637, 0.644948, 0, -0.74472183, 0.667375, 0, 33.307156, 6.8690004)
+
+[node name="GravityZones" type="Node" parent="." unique_id=1741317039]
+
+[node name="GravityZone" parent="GravityZones" unique_id=681804853 node_paths=PackedStringArray("origin", "zone") instance=ExtResource("7_fq0ke")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 4, -26.2)
+direction = 1
+origin = NodePath("Origin")
+zone = NodePath("Zone")
+
+[node name="Origin" type="Marker3D" parent="GravityZones/GravityZone" unique_id=2096950868]
+
+[node name="Zone" type="Area3D" parent="GravityZones/GravityZone" unique_id=295366092]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GravityZones/GravityZone/Zone" unique_id=389497465]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
+shape = SubResource("SphereShape3D_ijnqc")
 
 [node name="Label3D" type="Label3D" parent="." unique_id=2140965927]
 transform = Transform3D(-4.371139e-08, 0, -1, -1, -4.371139e-08, 4.371139e-08, -4.371139e-08, 1, 1.9106855e-15, 23, 3.8, -26)

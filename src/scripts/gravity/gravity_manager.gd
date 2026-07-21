@@ -2,9 +2,17 @@ extends Node
 class_name GravityManager
 
 var _player: Player
+var _gravity_zones: Array[GravityZone]
+var _active_zone: GravityZone = null
 
 func setup(player: Player) -> void:
     _player = player
+
+func set_zones(zones: Array[GravityZone]) -> void:
+    _gravity_zones = zones
+    # for zone in _gravity_zones:
+        #zone.player_entered.connect(_on_zone_entered)
+        # zone.player_exited.connect(_on_zone_exited)
 
 func player_flip() -> void:
     if _player == null:
@@ -13,15 +21,15 @@ func player_flip() -> void:
         return
     if not _player.can_flip():
         return
-
+    if _active_zone != null:
+        return
+        
     _player.lock()
     var new_gravity_dir := _calculate_gravity_direction()
     var current_gravity_dir := -_player.up_direction
-
     if new_gravity_dir.is_equal_approx(current_gravity_dir):
         _player.unlock()
         return
-
     _player.set_gravity_direction(new_gravity_dir)
     _player.unlock()
 
