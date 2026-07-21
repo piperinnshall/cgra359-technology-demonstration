@@ -19,13 +19,17 @@ func set_zones(zones: Array[GravityZone]) -> void:
 func _process(_delta: float) -> void:
     if _player == null:
         return
+
     if _active_zone == null:
         return
 
-    var gravity_dir := _active_zone.get_gravity_direction( _player.global_position )
-    var current_gravity_dir := -_player.up_direction
+    var gravity_dir := _active_zone.get_gravity_direction(
+        _player.global_position
+    )
 
-    if gravity_dir.angle_to(current_gravity_dir) > 0.01:
+    var current_gravity := -_player.up_direction
+
+    if gravity_dir.angle_to(current_gravity) > 0.001:
         _player.set_zone_gravity_direction(gravity_dir)
 
 func player_flip() -> void:
@@ -76,6 +80,8 @@ func _on_zone_entered(zone: GravityZone) -> void:
 func _on_zone_exited(zone: GravityZone) -> void:
     if _active_zone == zone:
         _active_zone = null
-        # Return to normal cardinal gravity after leaving the zone.
-        var snap_direction := _calculate_gravity_direction()
-        _player.set_gravity_direction(snap_direction)
+
+        var current_gravity := -_player.up_direction
+        var snap_direction := _snap_to_cardinal(current_gravity)
+
+        _player.set_zone_gravity_direction(snap_direction)

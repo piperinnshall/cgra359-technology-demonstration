@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://blritpjkjxcxm" path="res://assets/art/third-party/prototype-textures/png/red/texture_09.png" id="7_8pxgm"]
 [ext_resource type="PackedScene" uid="uid://cmquosr3akj76" path="res://src/scenes/gravity/gravity_zone.tscn" id="7_fq0ke"]
 [ext_resource type="Texture2D" uid="uid://dowhy66n40yyh" path="res://assets/art/third-party/prototype-textures/png/orange/texture_13.png" id="7_lxv86"]
+[ext_resource type="Texture2D" uid="uid://31v3goa1muwb" path="res://assets/art/third-party/prototype-textures/png/dark/texture_01.png" id="8_8pxgm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lxv86"]
 albedo_texture = ExtResource("6_lxv86")
@@ -84,14 +85,23 @@ albedo_texture = ExtResource("7_8pxgm")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fv4hx"]
+albedo_texture = ExtResource("8_8pxgm")
+uv1_scale = Vector3(1, -1, 1)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_b025m"]
 size = Vector3(300, 300, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8pxgm"]
+size = Vector3(8.1, 4.7000003, 7.5)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ijnqc"]
 
 [node name="LevelDemo" type="Node3D" unique_id=969973468 node_paths=PackedStringArray("gravity_zones")]
 script = ExtResource("1_muoeo")
-gravity_zones = [NodePath("GravityZones/GravityZone")]
+gravity_zones = [NodePath("GravityZones/GravityZone"), NodePath("GravityZones/Cylinder")]
 
 [node name="PlayerSpawn" type="Marker3D" parent="." unique_id=1750786387]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -101,8 +111,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
 use_collision = true
 
 [node name="GreyBox9" parent="Geometry" unique_id=1742231401 instance=ExtResource("2_rkge7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 7, -12)
-size = Vector3(1, 1, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 7, -12)
+size = Vector3(2, 1, 5)
 material = SubResource("StandardMaterial3D_lxv86")
 color = 4
 texture = 4
@@ -192,6 +202,18 @@ radial_segments = 100
 rings = 40
 material = SubResource("StandardMaterial3D_2ul2v")
 
+[node name="GreyBox" parent="Geometry" unique_id=1780109401 instance=ExtResource("2_rkge7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7, 11, -13.200001)
+size = Vector3(5, 8, 9)
+material = SubResource("StandardMaterial3D_fv4hx")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Geometry/GreyBox" unique_id=1549194758]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, -5.1000004, -4.800001)
+operation = 2
+radius = 8.900001
+height = 5.3999996
+sides = 17
+
 [node name="DeathBox" type="Area3D" parent="." unique_id=1792755857]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 
@@ -235,7 +257,22 @@ transform = Transform3D(0.8660254, -0.3336875, -0.37236091, 0.5, 0.5779637, 0.64
 
 [node name="GravityZones" type="Node" parent="." unique_id=1741317039]
 
-[node name="GravityZone" parent="GravityZones" unique_id=681804853 node_paths=PackedStringArray("origin", "zone") instance=ExtResource("7_fq0ke")]
+[node name="Cylinder" parent="GravityZones" unique_id=681804853 node_paths=PackedStringArray("origin", "zone") instance=ExtResource("7_fq0ke")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7, 8.299999, -28)
+direction = 0
+origin = NodePath("Origin")
+zone = NodePath("Zone")
+
+[node name="Origin" type="Marker3D" parent="GravityZones/Cylinder" unique_id=341302791]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -3.3000011)
+
+[node name="Zone" type="Area3D" parent="GravityZones/Cylinder" unique_id=1967385279]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GravityZones/Cylinder/Zone" unique_id=1698666507]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.023439407, 3.0499992, 0.9500027)
+shape = SubResource("BoxShape3D_8pxgm")
+
+[node name="GravityZone" parent="GravityZones" unique_id=1064887061 node_paths=PackedStringArray("origin", "zone") instance=ExtResource("7_fq0ke")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, 4, -26.2)
 origin = NodePath("Origin")
 zone = NodePath("Zone")
@@ -245,7 +282,7 @@ zone = NodePath("Zone")
 [node name="Zone" type="Area3D" parent="GravityZones/GravityZone" unique_id=295366092]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GravityZones/GravityZone/Zone" unique_id=389497465]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
+transform = Transform3D(14, 0, 0, 0, 14, 0, 0, 0, 14, 0, 0, 0)
 shape = SubResource("SphereShape3D_ijnqc")
 
 [node name="Label3D" type="Label3D" parent="." unique_id=2140965927]

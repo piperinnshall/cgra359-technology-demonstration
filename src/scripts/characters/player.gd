@@ -26,10 +26,9 @@ var can_rotate := false
 @onready var pivot: Node3D = $Harness/Pivot
 @onready var camera: Camera3D = $Harness/Pivot/Camera
 
-
 func _ready() -> void:
     up_direction = global_transform.basis.y
-
+    floor_snap_length = 0.5
 
 func setup(gravity_manager: GravityManager) -> void:
     _gravity_manager = gravity_manager
@@ -186,36 +185,19 @@ func set_gravity_direction(gravity_direction: Vector3) -> void:
         _visual_progress = 0.0
 
 func set_zone_gravity_direction(gravity_direction: Vector3) -> void:
-    # Mario Galaxy style gravity.
-    # Rotates the player body to match the gravity direction.
-    # Does not use the flip animation system.
-
     var new_up := -gravity_direction.normalized()
-
-    var forward := -global_transform.basis.z
-
-    # Keep Mario facing the same direction, but flatten onto the new surface.
-    forward = forward - forward.project(new_up)
-
-    if forward.length() < 0.001:
-        forward = global_transform.basis.x
-
-    forward = forward.normalized()
-
-    var right := new_up.cross(forward).normalized()
-    forward = right.cross(new_up).normalized()
-
-    global_transform.basis = Basis(
-        right,
-        new_up,
-        -forward
-    ).orthonormalized()
 
     up_direction = new_up
 
-    # Gravity zones should inherit the player's new orientation.
-    # Do not trigger the manual flip animation.
-    harness.rotation = Vector3.ZERO
+    # Rotate only the visual body, not the CharacterBody3D.
+    var current_up := harness.global_transform.basis.y.normalized()
+
+    if current_up.angle_to(new_up) > 0.001:
+        var current_rotation := Quaternion(current_up, new_up)
+
+        harness.global_transform.basis = Basis(
+            current_rotation * Quaternion(harness.global_transform.basis)
+        ).orthonormalized()
 
 
 func _rotation_between(from: Vector3, to: Vector3) -> Quaternion:
