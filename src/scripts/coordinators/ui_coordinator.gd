@@ -8,6 +8,7 @@ enum State {
 }
 
 var _game_coordinator: GameCoordinator
+var _world_coordinator: WorldCoordinator
 var state := State.MAIN_MENU
 
 @onready var _debug_menu: Control = $DebugMenu
@@ -22,9 +23,13 @@ var state := State.MAIN_MENU
 
 func _ready() -> void:
     process_mode = Node.PROCESS_MODE_ALWAYS
+    
+func _process(_delta: float) -> void:
+    _hud.update(_world_coordinator._player.can_rotate)
 
-func setup(game_coordinator: GameCoordinator):
+func setup(game_coordinator: GameCoordinator, world_coordinator: WorldCoordinator):
     _game_coordinator = game_coordinator
+    _world_coordinator = world_coordinator
     _main_menu.play_pressed.connect(_on_play_pressed)
     _main_menu.quit_pressed.connect(_on_quit_pressed)
 

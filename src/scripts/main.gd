@@ -7,5 +7,5 @@ extends Node
 
 func _ready() -> void:
     _world.setup(_scenes)
-    _ui.setup(_game)
+    _ui.setup(_game, _world)
     _game.setup(_ui, _world)
