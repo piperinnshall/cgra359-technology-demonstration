@@ -78,6 +78,7 @@ func _physics_process(delta: float) -> void:
 func _update_visual_rotation(delta: float) -> void:
     if _visual_progress >= 1.0:
         return
+        
     _visual_progress = min(_visual_progress + delta * camera_flip_speed, 1.0)
     var q := _visual_start.slerp(_visual_target, _visual_progress)
     harness.global_transform.basis = Basis(q)
@@ -138,3 +139,6 @@ func set_gravity_direction(gravity_direction: Vector3) -> void:
 
 func _rotation_between(from: Vector3, to: Vector3) -> Quaternion:
     return Quaternion(from, to)
+    
+func can_flip() -> bool:
+    return _visual_progress >= 1.0

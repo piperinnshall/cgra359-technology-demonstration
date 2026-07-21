@@ -9,8 +9,9 @@ func setup(player: Player) -> void:
 func player_flip() -> void:
     if _player == null:
         return
-
     if not _player.is_on_floor():
+        return
+    if not _player.can_flip():
         return
 
     _player.lock()
