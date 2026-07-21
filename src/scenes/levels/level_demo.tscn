@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dnjntpprwedh3" path="res://assets/art/third-party/prototype-textures/png/green/texture_09.png" id="3_rkge7"]
 [ext_resource type="Texture2D" uid="uid://sirsuk5fe6ap" path="res://assets/art/third-party/prototype-textures/png/orange/texture_02.png" id="5_lxv86"]
 [ext_resource type="Texture2D" uid="uid://djx7te6cjp3j6" path="res://assets/art/third-party/prototype-textures/png/purple/texture_05.png" id="6_lxv86"]
+[ext_resource type="Texture2D" uid="uid://blritpjkjxcxm" path="res://assets/art/third-party/prototype-textures/png/red/texture_09.png" id="7_8pxgm"]
 [ext_resource type="PackedScene" uid="uid://cmquosr3akj76" path="res://src/scenes/gravity/gravity_zone.tscn" id="7_fq0ke"]
 [ext_resource type="Texture2D" uid="uid://dowhy66n40yyh" path="res://assets/art/third-party/prototype-textures/png/orange/texture_13.png" id="7_lxv86"]
 
@@ -78,8 +79,13 @@ uv1_scale = Vector3(1, -1, 1)
 uv1_triplanar = true
 uv1_world_triplanar = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ul2v"]
+albedo_texture = ExtResource("7_8pxgm")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_b025m"]
-size = Vector3(66, 73, 1)
+size = Vector3(300, 300, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ijnqc"]
 
@@ -180,39 +186,42 @@ color = 1
 texture = 8
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Geometry" unique_id=468457386]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 4, -12.200001)
-radius = 3.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, 4, -12.200001)
+radius = 6.0
+radial_segments = 100
+rings = 40
+material = SubResource("StandardMaterial3D_2ul2v")
 
 [node name="DeathBox" type="Area3D" parent="." unique_id=1792755857]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathBox" unique_id=355550580]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 6.5, 17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 6.5, 45)
 shape = SubResource("BoxShape3D_b025m")
 debug_color = Color(0.9518047, 0, 0.18320847, 1)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="DeathBox" unique_id=330308587]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 6.5, -35)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 6.5, -94)
 shape = SubResource("BoxShape3D_b025m")
 debug_color = Color(0.9518047, 0, 0.18320847, 1)
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="DeathBox" unique_id=556445130]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -20, 6.5, -7)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -46, 6.5, -7)
 shape = SubResource("BoxShape3D_b025m")
 debug_color = Color(0.9518047, 0, 0.18320847, 1)
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="DeathBox" unique_id=1500464265]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 45, 6.5, -7)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 83, 6.5, -7)
 shape = SubResource("BoxShape3D_b025m")
 debug_color = Color(0.9518047, 0, 0.18320847, 1)
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="DeathBox" unique_id=1846905499]
-transform = Transform3D(1.9106855e-15, 1, 4.371139e-08, 4.371139e-08, -4.371139e-08, 1, 1, 0, -4.371139e-08, 17, 27.5, -7)
+transform = Transform3D(1.9106855e-15, 1, 4.371139e-08, 4.371139e-08, -4.371139e-08, 1, 1, 0, -4.371139e-08, 17, 50.5, -7)
 shape = SubResource("BoxShape3D_b025m")
 debug_color = Color(0.9518047, 0, 0.18320847, 1)
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="DeathBox" unique_id=288874475]
-transform = Transform3D(1.9106855e-15, 1, 4.371139e-08, 4.371139e-08, -4.371139e-08, 1, 1, 0, -4.371139e-08, 17, -21.5, -7)
+transform = Transform3D(1.9106855e-15, 1, 4.371139e-08, 4.371139e-08, -4.371139e-08, 1, 1, 0, -4.371139e-08, 17, -52.5, -7)
 shape = SubResource("BoxShape3D_b025m")
 debug_color = Color(0.9518047, 0, 0.18320847, 1)
 
@@ -227,8 +236,7 @@ transform = Transform3D(0.8660254, -0.3336875, -0.37236091, 0.5, 0.5779637, 0.64
 [node name="GravityZones" type="Node" parent="." unique_id=1741317039]
 
 [node name="GravityZone" parent="GravityZones" unique_id=681804853 node_paths=PackedStringArray("origin", "zone") instance=ExtResource("7_fq0ke")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 4, -26.2)
-direction = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5, 4, -26.2)
 origin = NodePath("Origin")
 zone = NodePath("Zone")
 
@@ -237,7 +245,7 @@ zone = NodePath("Zone")
 [node name="Zone" type="Area3D" parent="GravityZones/GravityZone" unique_id=295366092]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GravityZones/GravityZone/Zone" unique_id=389497465]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
 shape = SubResource("SphereShape3D_ijnqc")
 
 [node name="Label3D" type="Label3D" parent="." unique_id=2140965927]

@@ -9,7 +9,7 @@ enum Direction {
     PULL,
 }
 
-@export var direction := Direction.PUSH
+@export var direction := Direction.PULL
 @export var origin: Marker3D
 @export var zone: Area3D
 
@@ -19,10 +19,12 @@ func _ready() -> void:
 
 func get_gravity_direction(point: Vector3) -> Vector3:
     var gravity := (origin.global_position - point).normalized()
+
     if direction == Direction.PUSH:
         gravity = -gravity
+
     return gravity
-    
+
 func _on_body_entered(body: Node3D) -> void:
     if body is Player:
         player_entered.emit(self)
