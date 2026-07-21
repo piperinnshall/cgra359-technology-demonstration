@@ -25,7 +25,7 @@ func _ready() -> void:
     process_mode = Node.PROCESS_MODE_ALWAYS
     
 func _process(_delta: float) -> void:
-    _hud.update(_world_coordinator._player.can_rotate)
+    _hud.update(_world_coordinator.player_can_rotate())
 
 func setup(game_coordinator: GameCoordinator, world_coordinator: WorldCoordinator):
     _game_coordinator = game_coordinator

@@ -52,7 +52,7 @@ func _on_level_loaded(scene: PackedScene) -> void:
         _change_callback.call()
     _change_callback = Callable()
     
-# ------------------------------------------
+# --------------------------------------------------
 
 func player_can_rotate() -> bool:
-    return _player.can_rotate
+    return _player.is_on_floor() and _player.can_rotate
