@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bdew20lohbi3w"]
 
 [ext_resource type="Script" uid="uid://cg5n4twbj7u2l" path="res://src/scripts/blockout/grey_box.gd" id="1_0ck32"]
-[ext_resource type="Texture2D" uid="uid://31v3goa1muwb" path="res://assets/art/third-party/prototype-textures/png/dark/texture_01.png" id="1_f8517"]
+[ext_resource type="Texture2D" uid="uid://dle1irjxmrr7y" path="res://assets/art/third-party/prototype-textures/png/dark/texture_01.png" id="1_f8517"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i7pmn"]
 albedo_texture = ExtResource("1_f8517")
