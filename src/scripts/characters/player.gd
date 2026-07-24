@@ -57,6 +57,7 @@ func _physics_process(delta: float) -> void:
     if _locked:
         return
 
+    # Separating vertical and horizontal velocity keeps gravity aligned with custom up directions.
     var vertical_velocity := velocity.project(up_direction)
     var horizontal_velocity := velocity - vertical_velocity
 
@@ -96,6 +97,7 @@ func _update_visual_rotation(delta: float) -> void:
     if _visual_progress >= 1.0:
         return
 
+    # Slerp creates a smooth rotation transition instead of instantly snapping the player model.
     _visual_progress = min(
         _visual_progress + delta * camera_flip_speed,
         1.0
@@ -118,6 +120,7 @@ func unlock() -> void:
     _locked = false
 
 
+# The player can only flip when the camera is close to a cardinal direction to prevent awkward rotations.
 func _update_can_rotate() -> void:
     var current_pitch = camera.rotation.x
     var current_yaw = pivot.rotation.y
@@ -155,8 +158,7 @@ func _update_can_rotate() -> void:
     can_rotate = min_distance <= _rotation_radius
     
 func set_gravity_direction(gravity_direction: Vector3) -> void:
-    # KEEP THIS FOR MANUAL CLICK FLIPS.
-    # This preserves the original flip behaviour and animation.
+    # Manual flips rotate the CharacterBody itself, while the harness handles the smooth visual transition.
     var old_visual := Quaternion(harness.global_transform.basis.orthonormalized())
 
     var new_up := -gravity_direction
@@ -189,7 +191,7 @@ func set_zone_gravity_direction(gravity_direction: Vector3) -> void:
 
     up_direction = new_up
 
-    # Rotate only the visual body, not the CharacterBody3D.
+    # Zones only change gravity direction; rotating the physics body would cause unwanted movement changes.
     var current_up := harness.global_transform.basis.y.normalized()
 
     if current_up.angle_to(new_up) > 0.001:

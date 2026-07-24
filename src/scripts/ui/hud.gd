@@ -4,6 +4,7 @@ var _player_can_rotate := false
 
 func _ready() -> void:
     mouse_filter = Control.MOUSE_FILTER_IGNORE
+    $Cursor.mouse_filter = Control.MOUSE_FILTER_IGNORE
     visible = false
 
 func _process(_delta: float) -> void:

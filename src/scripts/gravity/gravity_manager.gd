@@ -5,7 +5,6 @@ var _player: Player
 var _gravity_zones: Array[GravityZone] = []
 var _active_zone: GravityZone = null
 
-
 func setup(player: Player) -> void:
     _player = player
 
@@ -29,6 +28,7 @@ func _process(_delta: float) -> void:
 
     var current_gravity := -_player.up_direction
 
+    # Avoid constantly updating the player gravity when the direction has not meaningfully changed.
     if gravity_dir.angle_to(current_gravity) > 0.001:
         _player.set_zone_gravity_direction(gravity_dir)
 
@@ -48,6 +48,7 @@ func player_flip() -> void:
     if new_gravity_dir.is_equal_approx(current_gravity_dir):
         return
 
+    # Locking prevents movement/input conflicts while the player's orientation is being changed.
     _player.lock()
     _player.set_gravity_direction(new_gravity_dir)
     _player.unlock()
@@ -61,6 +62,7 @@ func _calculate_gravity_direction() -> Vector3:
 func _snap_to_cardinal(v: Vector3) -> Vector3:
     var a := v.abs()
 
+    # Gravity is restricted to the six cardinal directions so rotations stay predictable.
     if a.x >= a.y and a.x >= a.z:
         return Vector3(signf(v.x), 0, 0)
 

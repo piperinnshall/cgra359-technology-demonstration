@@ -21,6 +21,7 @@ InputManager="*uid://das36fd0ut52r"
 
 [display]
 
+window/size/mode=2
 window/size/resizable=false
 window/size/borderless=true
 
@@ -35,6 +36,8 @@ folder_colors={
 "res://assets/": "gray",
 "res://assets/art/": "red",
 "res://assets/audio/": "orange",
+"res://exports/": "gray",
+"res://report/": "gray",
 "res://src/": "gray",
 "res://src/autoload/": "red",
 "res://src/debug/": "orange",
