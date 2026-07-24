@@ -1,3 +1,74 @@
+# Gravity Systems for Multi-Oriented Environments
+
+* **Student:** Piper Inns Hall
+* **Course:** CGRA 359: Games and Graphics Project
+* **Institution:** Victoria University of Wellington
+* **Date:** July 2026
+
+---
+
+## Overview
+
+This project demonstrates a custom dynamic gravity system developed in Godot 4.
+
+Traditional game engine controllers lock gravity along a static downward axis,
+limiting movement on walls, ceilings, or arbitrary surfaces. This
+implementation treats gravity direction as a real-time vector variable,
+allowing dynamic gravitational shifts while maintaining movement physics,
+jumping, camera orientation, and precise collision handling.
+
+By separating the player's underlying physics calculations from the visual
+camera rotation, the system delivers responsive controls without visual
+snapping or physics instability during gravity transitions.
+
+---
+
+## Features
+
+### Dynamic Gravity & Cardinal Snapping
+* Gravity changes direction dynamically during gameplay.
+* Manual gravity flips lock to four cardinal directions based on current camera
+  orientation.
+* Includes deadzone thresholds to prevent accidental flips when looking
+  diagonally between directional vectors.
+
+### Gravity Zones
+* Area-based fields apply point-origin gravity effects (pulling the player
+  toward or pushing them away from a center point).
+* Zones automatically take control upon entry and temporarily disable manual
+  flipping to prevent physics conflicts.
+
+### Smooth Rotation Blending
+* Separates physics rotation from visual camera/mesh rotation.
+* Physics updates instantaneously to keep collisions and movement precise.
+* Visual models interpolate smoothly using Spherical Linear Interpolation
+  (SLERP) to eliminate visual snapping and momentum glitches.
+
+---
+
+## Controls
+
+| Action | Input |
+| :--- | :--- |
+| Move | WASD |
+| Look | Mouse |
+| Jump | Space |
+| Gravity Flip | Left Click |
+
+---
+
+## Setup & Running the Project
+
+### Prerequisites
+* Godot Engine 4.x
+
+### Instructions
+1. Download or clone the project repository to your local machine.
+2. Launch Godot Engine and select Import.
+3. Browse to the project root folder and select the project.godot file.
+4. Click Import & Edit to load the project into the editor.
+5. Press the Play button in the top right to run the main scene.
+
 # **CGRA 359 Games and Graphics Project**
 
 **Assignment 1 – Plan/Learn Phase: Technology Assessment or Game Design
