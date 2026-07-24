@@ -219,6 +219,26 @@ Understanding custom gravity systems provides experience with physics,
 transforms, quaternion mathematics, and player controllers. These skills
 apply to gameplay programming and technical design.
 
+= GAME:BADGES Competencies
+
+This project demonstrates the following GAME:BADGES competencies:
+
+- Gameplay Programmer:
+  - Game Mechanics Programming -- implementation of custom gravity,
+    movement, jumping, and gravity-based gameplay systems.
+  - Math & Physics -- use of vectors, quaternions, transforms, and
+    physics-based character movement.
+
+- Engine Programmer:
+  - System Architecture -- separation of physics logic, gravity
+    management, and visual rotation systems.
+  - Optimisation -- efficient gravity updates and controlled rotation
+    calculations.
+
+- Graphics Programmer:
+  - Graphics Programming -- camera orientation handling and smooth
+    visual interpolation using quaternion SLERP.
+
 = Resources
 
 == Effective Search Terms for Further Research
